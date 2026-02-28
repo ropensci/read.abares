@@ -6,7 +6,6 @@
 ^doc$
 ^Meta$
 ^.covrignore$
-^\.github$
 ^air\.toml$
 ^inst/tools$
 ^flir$
