@@ -13,9 +13,9 @@ Downloads and imports agricultural data from the Australian Bureau of Agricultur
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ropensci/read.abares}
   \item \url{https://docs.ropensci.org/read.abares/}
-  \item Report bugs at \url{https://github.com/ropensci/read.abares/issues}
+  \item \url{https://codeberg.org/ropensci/read.abares}
+  \item Report bugs at \url{https://codeberg.org/ropensci/read.abares/issues}
 }
 
 }

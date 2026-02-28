@@ -28,9 +28,9 @@ Description: Downloads and imports agricultural data from the Australian
     also streamlines the import of geospatial data and corrects common
     issues found in these data sources upon loading.
 License: MIT + file LICENSE
-URL: https://github.com/ropensci/read.abares,
-    https://docs.ropensci.org/read.abares/
-BugReports: https://github.com/ropensci/read.abares/issues
+URL:https://docs.ropensci.org/read.abares/,
+    https://codeberg.org/ropensci/read.abares
+BugReports: https://codeberg.org/ropensci/read.abares/issues
 Depends: 
     R (>= 4.1.0)
 Imports: 
