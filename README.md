@@ -7,8 +7,6 @@
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R-CMD-check](https://github.com/ropensci/read.abares/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/read.abares/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/gh/ropensci/read.abares/graph/badge.svg?token=RJcUkWMSfo)](https://app.codecov.io/gh/ropensci/read.abares)
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/667_status.svg)](https://github.com/ropensci/software-review/issues/667)
 <!-- badges: end -->
 
