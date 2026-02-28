@@ -10,8 +10,6 @@ test_that(".map_verbosity maps inputs correctly", {
 
 test_that("read.abares_user_agent constructs correct strings", {
   # Test the CI path
-  # NOTE: Your source code has "READABARES _CI" (with a space).
-  # If you fix the typo in the source, update this string.
   withr::local_envvar(list("READABARES_CI" = "true"))
 
   ua <- read.abares_user_agent()
