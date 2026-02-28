@@ -409,7 +409,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "618.455KB",
+  "fileSize": "618.139KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -427,7 +427,6 @@
   ],
   "releaseNotes": "https://github.com/ropensci/read.abares/blob/main/NEWS.md",
   "readme": "https://github.com/ropensci/read.abares/blob/main/README.md",
-  "contIntegration": ["https://github.com/ropensci/read.abares/actions/workflows/R-CMD-check.yaml", "https://app.codecov.io/gh/ropensci/read.abares"],
   "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html#stable", "https://www.repostatus.org/#active"],
   "review": {
     "@type": "Review",
