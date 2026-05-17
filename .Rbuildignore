@@ -9,7 +9,6 @@
 ^.covrignore$
 ^air\.toml$
 ^inst/tools$
-^flir$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
 ^man/dot-get_agfd.Rd
