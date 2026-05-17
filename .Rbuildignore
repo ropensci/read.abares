@@ -1,4 +1,5 @@
 ^LICENSE\.md$
+^CONTRIBUTING1\.md$
 ^codemeta\.json$
 ^docs$
 ^pkgdown$
