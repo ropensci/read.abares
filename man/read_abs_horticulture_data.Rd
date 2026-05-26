@@ -41,8 +41,8 @@ horticulture_data
 \url{https://www.abs.gov.au/statistics/industry/agriculture/australian-agriculture-horticulture}.
 }
 \seealso{
-Other ABS: 
-\code{\link{read_abs_broadacre_data}()},
-\code{\link{read_abs_livestock_data}()}
+Other ABS:
+\code{\link[=read_abs_broadacre_data]{read_abs_broadacre_data()}},
+\code{\link[=read_abs_livestock_data]{read_abs_livestock_data()}}
 }
 \concept{ABS}

@@ -1,9 +1,11 @@
 #' Read Data from the ABARES Trade Dashboard
 #'
-#' Fetches and imports \acronym{ABARES} trade data. As the data x is large,
-#'  ~1.4GB uncompressed \acronym{CSV} x.
+#' Fetches and imports \acronym{ABARES} trade data. As the data, `x`, is large,
+#'  ~1.5GB uncompressed \acronym{CSV}, downloads may be slow.
 #'
 #' @inheritParams read_aagis_regions
+#' @param trade_code_desc Boolean. Include the trade code description, this
+#'   results in a larger file with long text descriptions for each trade code.
 #' @note
 #' Columns are renamed for consistency with other \acronym{ABARES} products
 #'  serviced in this package using a snake_case format and ordered
@@ -21,7 +23,7 @@
 #' @autoglobal
 #' @export
 
-read_abares_trade <- function(x = NULL) {
+read_abares_trade <- function(x = NULL, trade_code_desc = FALSE) {
   if (is.null(x)) {
     x <- fs::path_temp("abares_trade_data.zip")
 
@@ -32,7 +34,23 @@ read_abares_trade <- function(x = NULL) {
   }
   abares_trade <- data.table::fread(
     x,
-    verbose = getOption("read.abares.verbosity") == "verbose"
+    verbose = getOption("read.abares.verbosity") == "verbose",
+    colClasses = c(
+      Fiscal_year = "character",
+      Month = "integer",
+      YearMonth = "character",
+      Calendar_year = "integer",
+      TradeCode = "factor",
+      Overseas_location = "character",
+      State = "character",
+      Australian_port = "character",
+      Unit = "character",
+      TradeFlow = "character",
+      ModeOfTransport = "character",
+      Value = "numeric",
+      Quantity = "numeric",
+      confidentiality_flag = "integer"
+    )
   )
   data.table::setnames(
     abares_trade,
@@ -69,15 +87,26 @@ read_abares_trade <- function(x = NULL) {
       "Confidentiality_flag"
     )
   )
+  data.table::setkey(abares_trade, "Year_month")
 
+  if (trade_code_desc) {
+    abares_trade[, temp_code := str_sub(code, 1, -3)]
+    abares_trade[,
+      description := fcase(
+        Calendar_year < 1996L , concordance::get_desc(temp_code, origin = "HS0") ,
+        Calendar_year < 2002L , concordance::get_desc(temp_code, origin = "HS1") ,
+        Calendar_year < 2007L , concordance::get_desc(temp_code, origin = "HS2") ,
+        default = condordance::get_desc(temp_code, origin = "HS3")
+      )
+    ]
+  }
   abares_trade[,
     Year_month := lubridate::ym(
       gsub(".", "-", Year_month, fixed = TRUE)
     )
   ]
-  abares_trade[,
-    Trade_code := as.factor(Trade_code)
-  ]
+
+  if (description) {}
 
   return(abares_trade[])
 }

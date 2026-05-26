@@ -39,8 +39,8 @@ read.abares_options(read.abares.user_agent = "myCustomUserAgent")
 \seealso{
 \code{\link[=options]{options()}}, \code{\link[=getOption]{getOption()}}.
 
-Other read.abares-options: 
-\code{\link{read.abares_options}()}
+Other read.abares-options:
+\code{\link[=read.abares_options]{read.abares_options()}}
 }
 \concept{read.abares-options}
 \keyword{internal}

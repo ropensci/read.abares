@@ -3,8 +3,10 @@
 utils::globalVariables(c(
   "region_code", # <parse_abs_production_data>
   "data_item", # <parse_abs_production_data>
+  "description", # <read_abares_trade>
+  "Calendar_year", # <read_abares_trade>
+  "hs6", # <read_abares_trade>
   "Year_month", # <read_abares_trade>
-  "Trade_code", # <read_abares_trade>
   "lat", # <read_agfd_dt>
   "lon", # <read_agfd_dt>
   "Month_issued", # <read_historical_forecast_database>

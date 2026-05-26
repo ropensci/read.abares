@@ -1,3 +1,14 @@
+
+# read.abares 3.0.0
+
+## Major changes
+
+- Change column in data output of `read_abares_trade()` from `Trade_code` to `HS_trade_code` ([harmonised system trade code](https://export.business.gov.au/get-started-with-exporting/harmonized-system-codes)).
+
+## Minor changes
+
+- Add documentation around using {concordance} to find trade code product descriptions.
+
 # read.abares 2.0.1
 
 ## Minor changes

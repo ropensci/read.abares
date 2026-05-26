@@ -15,6 +15,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{terra}{\code{\link[terra]{activeCat}}, \code{\link[terra:factors]{categories}}, \code{\link[terra:factors]{cats}}, \code{\link[terra:factors]{levels}}, \code{\link[terra]{plot}}}
+  \item{terra}{\code{\link[terra:activeCat]{activeCat()}}, \code{\link[terra:categories]{categories()}}, \code{\link[terra:cats]{cats()}}, \code{\link[terra:levels]{levels()}}, \code{\link[terra:plot]{plot()}}}
 }}
 

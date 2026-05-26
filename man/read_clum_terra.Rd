@@ -89,7 +89,7 @@ version 2, Australian Bureau of Agricultural and Resource Economics and
 Sciences, Canberra, June, CC BY 4.0, DOI: \doi{10.25814/2w2p-ph98}
 }
 \seealso{
-Other clum: 
-\code{\link{read_clum_stars}()}
+Other clum:
+\code{\link[=read_clum_stars]{read_clum_stars()}}
 }
 \concept{clum}

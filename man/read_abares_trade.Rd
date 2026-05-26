@@ -7,7 +7,7 @@
 \url{https://daff.ent.sirsidynix.net.au/client/en_AU/search/asset/1033841/0}
 }
 \usage{
-read_abares_trade(x = NULL)
+read_abares_trade(x = NULL, trade_code_desc = FALSE)
 }
 \arguments{
 \item{x}{A file path providing the file with the data to be imported. The
@@ -15,13 +15,16 @@ file is assumed to be unarchived (\emph{i.e.}, still zipped). This function does
 not provide any checking whether this function is the proper function for
 the provided file.  Defaults to \code{NULL}, assuming that the file will be
 downloaded in the active \R session.}
+
+\item{trade_code_desc}{Boolean. Include the trade code description, this
+results in a larger file with long text descriptions for each trade code.}
 }
 \value{
 A \CRANpkg{data.table} object of the \acronym{ABARES} trade data.
 }
 \description{
-Fetches and imports \acronym{ABARES} trade data. As the data x is large,
-~1.4GB uncompressed \acronym{CSV} x.
+Fetches and imports \acronym{ABARES} trade data. As the data, \code{x}, is large,
+~1.5GB uncompressed \acronym{CSV}, downloads may be slow.
 }
 \note{
 Columns are renamed for consistency with other \acronym{ABARES} products
@@ -39,7 +42,7 @@ trade
 \url{https://www.agriculture.gov.au/abares/research-topics/trade/dashboard}
 }
 \seealso{
-Other Trade: 
-\code{\link{read_abares_trade_regions}()}
+Other Trade:
+\code{\link[=read_abares_trade_regions]{read_abares_trade_regions()}}
 }
 \concept{Trade}

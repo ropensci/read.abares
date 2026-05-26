@@ -22,6 +22,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Adam H. Sparks \email{adamhsparks@gmail.com} (\href{https://orcid.org/0000-0002-0061-8359}{ORCID})
 
+Authors:
+\itemize{
+  \item Adam H. Sparks \email{adamhsparks@gmail.com} (\href{https://orcid.org/0000-0002-0061-8359}{ORCID})
+}
+
 Other contributors:
 \itemize{
   \item Curtin University (\href{https://ror.org/02n415q13}{ROR}) (http://www.curtin.edu.au/) [funder, copyright holder]

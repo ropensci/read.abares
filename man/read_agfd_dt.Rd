@@ -206,9 +206,9 @@ the perspective of Australian farmers}, Climate Risk Management, Volume 35,
 2022, 100420, ISSN 2212-0963, \doi{10.1016/j.crm.2022.100420}.
 }
 \seealso{
-Other AGFD: 
-\code{\link{read_agfd_stars}()},
-\code{\link{read_agfd_terra}()},
-\code{\link{read_agfd_tidync}()}
+Other AGFD:
+\code{\link[=read_agfd_stars]{read_agfd_stars()}},
+\code{\link[=read_agfd_terra]{read_agfd_terra()}},
+\code{\link[=read_agfd_tidync]{read_agfd_tidync()}}
 }
 \concept{AGFD}

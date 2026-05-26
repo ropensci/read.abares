@@ -50,8 +50,8 @@ broadacre_data
 \url{https://www.abs.gov.au/statistics/industry/agriculture/australian-agriculture-broadacre-crops}.
 }
 \seealso{
-Other ABS: 
-\code{\link{read_abs_horticulture_data}()},
-\code{\link{read_abs_livestock_data}()}
+Other ABS:
+\code{\link[=read_abs_horticulture_data]{read_abs_horticulture_data()}},
+\code{\link[=read_abs_livestock_data]{read_abs_livestock_data()}}
 }
 \concept{ABS}
