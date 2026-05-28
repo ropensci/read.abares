@@ -7,7 +7,7 @@
 \url{https://daff.ent.sirsidynix.net.au/client/en_AU/search/asset/1033841/0}
 }
 \usage{
-read_abares_trade(x = NULL, trade_code_desc = FALSE)
+read_abares_trade(x = NULL, code_description = FALSE)
 }
 \arguments{
 \item{x}{A file path providing the file with the data to be imported. The
@@ -16,7 +16,7 @@ not provide any checking whether this function is the proper function for
 the provided file.  Defaults to \code{NULL}, assuming that the file will be
 downloaded in the active \R session.}
 
-\item{trade_code_desc}{Boolean. Include the trade code description, this
+\item{code_description}{Boolean. Include the trade code description, this
 results in a larger file with long text descriptions for each trade code.}
 }
 \value{
