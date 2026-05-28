@@ -1,13 +1,13 @@
 
-# read.abares 3.0.0
-
-## Major changes
-
-- Change column in data output of `read_abares_trade()` from `Trade_code` to `HS_trade_code` ([harmonised system trade code](https://export.business.gov.au/get-started-with-exporting/harmonized-system-codes)).
+# read.abares 2.1.0
 
 ## Minor changes
 
-- Add documentation around using {concordance} to find trade code product descriptions.
+- Users can now request trade code descriptions to be included in `read_abares_trade()`.
+
+## Bug fixes
+
+- Download caching now works as intended, files are not re-downloaded during the current session.
 
 # read.abares 2.0.1
 
