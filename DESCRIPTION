@@ -1,7 +1,7 @@
 Type: Package
 Package: read.abares
 Title: Read Australian Agricultural Data from Government Agencies
-Version: 2.0.1
+Version: 2.1.0
 Authors@R: c(
     person("Adam H.", "Sparks", , "adamhsparks@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-0061-8359")),
