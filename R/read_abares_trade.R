@@ -4,7 +4,7 @@
 #'  ~1.5GB uncompressed \acronym{CSV}, downloads may be slow.
 #'
 #' @inheritParams read_aagis_regions
-#' @param trade_code_desc Boolean. Include the trade code description, this
+#' @param code_description Boolean. Include the trade code description, this
 #'   results in a larger file with long text descriptions for each trade code.
 #' @note
 #' Columns are renamed for consistency with other \acronym{ABARES} products
@@ -23,7 +23,7 @@
 #' @autoglobal
 #' @export
 
-read_abares_trade <- function(x = NULL, trade_code_desc = FALSE) {
+read_abares_trade <- function(x = NULL, code_description = FALSE) {
   if (is.null(x)) {
     x <- fs::path_temp("abares_trade_data.zip")
 
@@ -89,24 +89,45 @@ read_abares_trade <- function(x = NULL, trade_code_desc = FALSE) {
   )
   data.table::setkey(abares_trade, "Year_month")
 
-  if (trade_code_desc) {
-    abares_trade[, temp_code := str_sub(code, 1, -3)]
+  if (code_description) {
+    abares_trade[, code_description := NA_character_]
     abares_trade[,
-      description := fcase(
-        Calendar_year < 1996L , concordance::get_desc(temp_code, origin = "HS0") ,
-        Calendar_year < 2002L , concordance::get_desc(temp_code, origin = "HS1") ,
-        Calendar_year < 2007L , concordance::get_desc(temp_code, origin = "HS2") ,
-        default = condordance::get_desc(temp_code, origin = "HS3")
-      )
+      temp_code := stringr::str_sub(as.character(Trade_code), 1L, 6L)
     ]
+
+    for (orig in list(
+      list(max = 1996L, hs = "HS0"),
+      list(max = 2002L, hs = "HS1"),
+      list(max = 2007L, hs = "HS2"),
+      list(max = Inf, hs = "HS3")
+    )) {
+      abares_trade[
+        Calendar_year < orig$max & is.na(code_description),
+        code_description := suppressWarnings(concordance::get_desc(
+          temp_code,
+          origin = orig$hs
+        ))
+      ]
+    }
+    abares_trade[
+      is.na(code_description),
+      code_description := suppressWarnings(concordance::get_desc(
+        temp_code,
+        origin = "HS"
+      ))
+    ]
+    abares_trade[
+      is.na(code_description),
+      code_description := paste0("Unknown code: ", temp_code)
+    ]
+    abares_trade[, temp_code := NULL]
   }
+
   abares_trade[,
     Year_month := lubridate::ym(
       gsub(".", "-", Year_month, fixed = TRUE)
     )
   ]
-
-  if (description) {}
 
   return(abares_trade[])
 }
