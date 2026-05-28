@@ -9,22 +9,22 @@
   list(
     rlib_message_verbosity = switch(
       v,
-      "quiet" = "quiet",
-      "minimal" = "minimal",
-      "verbose" = "verbose"
+      quiet = "quiet",
+      minimal = "minimal",
+      verbose = "verbose"
     ),
     rlib_warning_verbosity = switch(
       v,
-      "quiet" = "quiet",
-      "minimal" = "verbose",
-      "verbose" = "verbose"
+      quiet = "quiet",
+      minimal = "verbose",
+      verbose = "verbose"
     ),
-    warn = switch(v, "quiet" = -1L, "minimal" = 0L, "verbose" = 0L),
+    warn = switch(v, quiet = -1L, minimal = 0L, verbose = 0L),
     datatable.showProgress = switch(
       v,
-      "quiet" = FALSE,
-      "minimal" = FALSE,
-      "verbose" = TRUE
+      quiet = FALSE,
+      minimal = FALSE,
+      verbose = TRUE
     )
   )
 }
@@ -83,7 +83,7 @@
     read.abares.timeout = 5000L,
     read.abares.timeout_connect = 20L,
     read.abares.max_tries = 3L,
-    read.abares.verbosity = "verbose"
+    read.abares.verbosity = "minimal"
   )
   toset <- !(names(op.read.abares) %in% names(op))
   if (any(toset)) {
