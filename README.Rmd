@@ -55,12 +55,14 @@ Data serviced includes but is not limited to:
 install.packages("read.abares")
 ```
 
-{read.abares} is also available on [rOpenSci's R-universe](https://ropensci.r-universe.dev/) CRAN-like repository and you can install it from there like so:
+{read.abares} is also available on [rOpenSci's R-universe](https://ropensci.r-universe.dev/) CRAN-like repository and offers access to pre-CRAN releases.
+You can install it from there like so:
 
 ```r
-install.packages("read.abares",
-  repos = c('https://ropensci.r-universe.dev',
-    'https://cloud.r-project.org'))
+install.packages(
+  "read.abares",
+  repos = c('https://ropensci.r-universe.dev', 'https://cloud.r-project.org')
+)
 ```
 
 ## Features
