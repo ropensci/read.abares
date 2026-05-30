@@ -48,5 +48,5 @@ test_that("Package options are initialized correctly", {
   expect_false(is.null(defaults$timeout))
   expect_identical(defaults$timeout, 5000L)
   expect_identical(defaults$tries, 3L)
-  expect_identical(defaults$verb, "verbose")
+  expect_identical(defaults$verb, "default")
 })
