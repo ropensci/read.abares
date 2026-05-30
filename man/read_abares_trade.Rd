@@ -17,7 +17,9 @@ the provided file.  Defaults to \code{NULL}, assuming that the file will be
 downloaded in the active \R session.}
 
 \item{code_description}{Boolean. Include the trade code description, this
-results in a larger file with long text descriptions for each trade code.}
+results in a larger object with long text descriptions for each trade code,
+and the unit of quantity measure, \emph{e.g.},  "KG" (kilograms), "NO"
+(number/count), "L" (litres).}
 }
 \value{
 A \CRANpkg{data.table} object of the \acronym{ABARES} trade data.
