@@ -83,7 +83,7 @@
     read.abares.timeout = 5000L,
     read.abares.timeout_connect = 20L,
     read.abares.max_tries = 3L,
-    read.abares.verbosity = "minimal"
+    read.abares.verbosity = "default"
   )
   toset <- !(names(op.read.abares) %in% names(op))
   if (any(toset)) {
