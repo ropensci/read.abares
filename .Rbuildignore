@@ -26,6 +26,7 @@
 ^man/dot-check_agfd_yyyy.Rd
 ^man/dot-set_clum_update_levels.Rd
 ^man/dot-create_clum_50m_coltab.Rd
+^data-raw$
 ^man/dot-get_agfd\.Rd$
 ^man/dot-read_ncdf_from_zip\.Rd$
 ^man/dot-copy_local_agfd_zip\.Rd$
