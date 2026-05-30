@@ -24,9 +24,9 @@ view_nlum_metadata_pdf()
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other nlum: 
-\code{\link{read_nlum_stars}()},
-\code{\link{read_nlum_terra}()},
-\code{\link{view_clum_metadata_pdf}()}
+Other nlum:
+\code{\link[=read_nlum_stars]{read_nlum_stars()}},
+\code{\link[=read_nlum_terra]{read_nlum_terra()}},
+\code{\link[=view_clum_metadata_pdf]{view_clum_metadata_pdf()}}
 }
 \concept{nlum}

@@ -8,6 +8,7 @@
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/667_status.svg)](https://github.com/ropensci/software-review/issues/667)
+[![CRAN status](https://www.r-pkg.org/badges/version/read.abares)](https://CRAN.R-project.org/package=read.abares)
 <!-- badges: end -->
 
 An R package for automated downloading and ingestion of data from the Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES) and agricultural data from the Australian Bureau of Statistics (ABS).
@@ -119,7 +120,7 @@ citation("read.abares")
 #> 
 #>   Sparks A (????). _read.abares: Read Data from the Australian Bureau
 #>   of Agricultural and Resource Economics and Sciences (ABARES) and
-#>   Australian Bureau of Statistics (ABS)_. R package version 2.0.1,
+#>   Australian Bureau of Statistics (ABS)_. R package version 2.1.0,
 #>   <https://docs.ropensci.org/read.abares/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -129,7 +130,7 @@ citation("read.abares")
 #>     and Resource Economics and Sciences (ABARES) and Australian Bureau of
 #>     Statistics (ABS)},
 #>     author = {Adam H. Sparks},
-#>     note = {R package version 2.0.1},
+#>     note = {R package version 2.1.0},
 #>     url = {https://docs.ropensci.org/read.abares/},
 #>   }
 ```

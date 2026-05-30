@@ -38,7 +38,7 @@ trade_regions
 \url{https://daff.ent.sirsidynix.net.au/client/en_AU/search/asset/1033841/0}
 }
 \seealso{
-Other Trade: 
-\code{\link{read_abares_trade}()}
+Other Trade:
+\code{\link[=read_abares_trade]{read_abares_trade()}}
 }
 \concept{Trade}

@@ -15,8 +15,9 @@
 before emitting an error message.}
 }
 \value{
-Called for its side-effects, writes an object to the specified
-directory for reading into the active \R session later.
+An invisible file path character string. Called for its
+side-effects, writes an object to the specified directory for reading into
+the active \R session later.
 }
 \description{
 Retries to download the requested resource before stopping. Uses

@@ -1,9 +1,13 @@
 #' Read Data from the ABARES Trade Dashboard
 #'
-#' Fetches and imports \acronym{ABARES} trade data. As the data x is large,
-#'  ~1.4GB uncompressed \acronym{CSV} x.
+#' Fetches and imports \acronym{ABARES} trade data. As the data, `x`, is large,
+#'  ~1.5GB uncompressed \acronym{CSV}, downloads may be slow.
 #'
 #' @inheritParams read_aagis_regions
+#' @param code_description Boolean. Include the trade code description, this
+#'   results in a larger object with long text descriptions for each trade code,
+#'   and the unit of quantity measure, *e.g.*,  "KG" (kilograms), "NO"
+#'   (number/count), "L" (litres).
 #' @note
 #' Columns are renamed for consistency with other \acronym{ABARES} products
 #'  serviced in this package using a snake_case format and ordered
@@ -21,7 +25,7 @@
 #' @autoglobal
 #' @export
 
-read_abares_trade <- function(x = NULL) {
+read_abares_trade <- function(x = NULL, code_description = FALSE) {
   if (is.null(x)) {
     x <- fs::path_temp("abares_trade_data.zip")
 
@@ -32,7 +36,23 @@ read_abares_trade <- function(x = NULL) {
   }
   abares_trade <- data.table::fread(
     x,
-    verbose = getOption("read.abares.verbosity") == "verbose"
+    verbose = getOption("read.abares.verbosity") == "verbose",
+    colClasses = c(
+      Fiscal_year = "character",
+      Month = "integer",
+      YearMonth = "character",
+      Calendar_year = "integer",
+      TradeCode = "factor",
+      Overseas_location = "character",
+      State = "character",
+      Australian_port = "character",
+      Unit = "character",
+      TradeFlow = "character",
+      ModeOfTransport = "character",
+      Value = "numeric",
+      Quantity = "numeric",
+      confidentiality_flag = "integer"
+    )
   )
   data.table::setnames(
     abares_trade,
@@ -69,15 +89,29 @@ read_abares_trade <- function(x = NULL) {
       "Confidentiality_flag"
     )
   )
+  data.table::setkey(abares_trade, "Year_month")
 
   abares_trade[,
     Year_month := lubridate::ym(
       gsub(".", "-", Year_month, fixed = TRUE)
     )
   ]
-  abares_trade[,
-    Trade_code := as.factor(Trade_code)
-  ]
-
+  if (isTRUE(code_description)) {
+    abares_trade <- ahecc[abares_trade, on = .(ahecc_code = Trade_code)]
+    data.table::setnames(abares_trade, "ahecc_code", "Trade_code")
+    abares_trade[, Trade_code := as.factor(Trade_code)]
+    data.table::setcolorder(
+      abares_trade,
+      c(
+        "Fiscal_year",
+        "Month",
+        "Year_month",
+        "Calendar_year",
+        "Trade_code",
+        "description",
+        "uq"
+      )
+    )
+  }
   return(abares_trade[])
 }

@@ -4,6 +4,7 @@ utils::globalVariables(c(
   "region_code", # <parse_abs_production_data>
   "data_item", # <parse_abs_production_data>
   "Year_month", # <read_abares_trade>
+  "ahecc", # <read_abares_trade>
   "Trade_code", # <read_abares_trade>
   "lat", # <read_agfd_dt>
   "lon", # <read_agfd_dt>

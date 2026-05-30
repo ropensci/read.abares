@@ -38,8 +38,8 @@ plot(st_terra)
 \url{https://data.agriculture.gov.au/geonetwork/srv/eng/catalog.search#/metadata/faa9f157-8e17-4b23-b6a7-37eb7920ead6}.
 }
 \seealso{
-Other topsoil thickness: 
-\code{\link{print_topsoil_thickness_metadata}()},
-\code{\link{read_topsoil_thickness_stars}()}
+Other topsoil thickness:
+\code{\link[=print_topsoil_thickness_metadata]{print_topsoil_thickness_metadata()}},
+\code{\link[=read_topsoil_thickness_stars]{read_topsoil_thickness_stars()}}
 }
 \concept{topsoil thickness}

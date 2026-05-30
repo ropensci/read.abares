@@ -1,3 +1,14 @@
+
+# read.abares 2.1.0
+
+## Minor changes
+
+- Users can now request trade code descriptions to be included in `read_abares_trade()`.
+
+## Bug fixes
+
+- Download caching now works as intended, files are not re-downloaded during the current session.
+
 # read.abares 2.0.1
 
 ## Minor changes

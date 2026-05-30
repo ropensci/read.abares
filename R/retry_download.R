@@ -16,12 +16,17 @@
 #'   dest = f
 #' )
 #'
-#' @returns Called for its side-effects, writes an object to the specified
-#'   directory for reading into the active \R session later.
+#' @returns An invisible file path character string. Called for its
+#'   side-effects, writes an object to the specified directory for reading into
+#'   the active \R session later.
 #' @dev
 
 .retry_download <- function(url, dest, .max_tries = 3L) {
-  # Build base request
+  # Return early if already downloaded this session
+  if (file.exists(dest)) {
+    return(invisible(dest))
+  }
+
   req <- httr2::request(base_url = url) |>
     httr2::req_user_agent("read.abares") |>
     httr2::req_headers(
@@ -29,16 +34,17 @@
       "Connection" = "Keep-Alive"
     ) |>
     httr2::req_retry(max_tries = .max_tries) |>
-    httr2::req_cache(path = fs::path_temp())
+    .apply_conditional_options(url = url) # apply before req_cache
 
-  # Apply conditional modifications
-  req <- .apply_conditional_options(req, url)
+  # req_cache after all request modifications so the key is stable
+  req <- httr2::req_cache(req, path = fs::path_temp())
 
-  # Perform request and save
   req |>
     httr2::req_perform() |>
     httr2::resp_body_raw() |>
     brio::write_file_raw(path = dest)
+
+  invisible(dest)
 }
 
 #' Apply conditional options to httr2 request

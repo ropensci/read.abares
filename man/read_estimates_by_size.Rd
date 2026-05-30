@@ -43,10 +43,10 @@ read_est_by_size()
 \url{https://www.agriculture.gov.au/abares/data/farm-data-portal#data-download}.
 }
 \seealso{
-Other Estimates: 
-\code{\link{read_estimates_by_performance_category}()},
-\code{\link{read_historical_national_estimates}()},
-\code{\link{read_historical_regional_estimates}()},
-\code{\link{read_historical_state_estimates}()}
+Other Estimates:
+\code{\link[=read_estimates_by_performance_category]{read_estimates_by_performance_category()}},
+\code{\link[=read_historical_national_estimates]{read_historical_national_estimates()}},
+\code{\link[=read_historical_regional_estimates]{read_historical_regional_estimates()}},
+\code{\link[=read_historical_state_estimates]{read_historical_state_estimates()}}
 }
 \concept{Estimates}

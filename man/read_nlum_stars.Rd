@@ -113,9 +113,9 @@ Agricultural and Resource Economics and Sciences, Canberra, November, CC BY
 4.0. \doi{10.25814/w175-xh85}
 }
 \seealso{
-Other nlum: 
-\code{\link{read_nlum_terra}()},
-\code{\link{view_clum_metadata_pdf}()},
-\code{\link{view_nlum_metadata_pdf}()}
+Other nlum:
+\code{\link[=read_nlum_terra]{read_nlum_terra()}},
+\code{\link[=view_clum_metadata_pdf]{view_clum_metadata_pdf()}},
+\code{\link[=view_nlum_metadata_pdf]{view_nlum_metadata_pdf()}}
 }
 \concept{nlum}

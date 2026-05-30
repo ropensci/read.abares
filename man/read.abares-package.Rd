@@ -6,8 +6,6 @@
 \alias{read.abares-package}
 \title{read.abares: Read Australian Agricultural Data from Government Agencies}
 \description{
-\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
-
 Downloads and imports agricultural data from the Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES) \url{https://www.agriculture.gov.au/abares} and the Australian Bureau of Statistics (ABS) \url{https://www.abs.gov.au}. Supports multiple data formats including spreadsheets, comma‑separated value (CSV) files, and geospatial data such as shapefiles and GeoTIFFs. Covers topics such as broadacre crops, livestock, soils, commodities and related agricultural information. The package standardises field names and data formats to improve interoperability and simplify analysis. It also streamlines the import of geospatial data and corrects common issues found in these data sources upon loading.
 }
 \seealso{
@@ -21,6 +19,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Adam H. Sparks \email{adamhsparks@gmail.com} (\href{https://orcid.org/0000-0002-0061-8359}{ORCID})
+
+Authors:
+\itemize{
+  \item Adam H. Sparks \email{adamhsparks@gmail.com} (\href{https://orcid.org/0000-0002-0061-8359}{ORCID})
+}
 
 Other contributors:
 \itemize{

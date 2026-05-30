@@ -25,7 +25,7 @@ read.abares_options()
 
 }
 \seealso{
-Other read.abares-options: 
+Other read.abares-options:
 \code{\link{read.abares-options}}
 }
 \concept{read.abares-options}
