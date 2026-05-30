@@ -8,7 +8,7 @@
   "codeRepository": "https://docs.ropensci.org/read.abares/",
   "issueTracker": "https://codeberg.org/ropensci/read.abares/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -401,7 +401,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "617.58KB",
+  "fileSize": "716.502KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -414,7 +414,7 @@
       ],
       "name": "{read.abares}: Read Data from the Australian Bureau of Agricultural\n    and Resource Economics and Sciences (ABARES) and Australian Bureau of\n    Statistics (ABS)",
       "url": "https://docs.ropensci.org/read.abares/",
-      "description": "R package version 2.0.1"
+      "description": "R package version 2.1.0"
     }
   ],
   "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html#stable", "https://www.repostatus.org/#active"],
