@@ -8,6 +8,7 @@
 ## Bug fixes
 
 - Download caching now works as intended, files are not re-downloaded during the current session.
+- Verbosity is now set to "default" by "default", not "verbose".
 
 # read.abares 2.0.1
 
