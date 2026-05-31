@@ -12,8 +12,10 @@
 #' @note
 #' Columns are renamed for consistency with other \acronym{ABARES} products
 #'  serviced in this package using a snake_case format and ordered
-#'  consistently.
-#'
+#'  consistently. "State" reflects the state of origin of the exported
+#'  goods, not the state in which the port of departure is located; it is
+#'  therefore expected that "State" and "Australian_port" will not always
+#'  correspond geographically.
 #' @examplesIf interactive()
 #' trade <- read_abares_trade()
 #'
@@ -23,7 +25,8 @@
 #'
 #' trade_codes
 #'
-#' @returns A \CRANpkg{data.table} object of the \acronym{ABARES} trade data.
+#' @returns A \CRANpkg{data.table} object of the \acronym{ABARES} trade data
+#'  with the "Trade_code" field as the key for fast subsetting.
 #' @family Trade
 #' @references <https://www.agriculture.gov.au/abares/research-topics/trade/dashboard>
 #' @source <https://daff.ent.sirsidynix.net.au/client/en_AU/search/asset/1033841/0>
@@ -94,13 +97,7 @@ read_abares_trade <- function(x = NULL, code_description = FALSE) {
       "Confidentiality_flag"
     )
   )
-  data.table::setkey(abares_trade, "Year_month")
 
-  abares_trade[,
-    Year_month := lubridate::ym(
-      gsub(".", "-", Year_month, fixed = TRUE)
-    )
-  ]
   if (isTRUE(code_description)) {
     abares_trade <- ahecc[abares_trade, on = "Trade_code"]
     abares_trade[, Trade_code := as.factor(Trade_code)]
@@ -121,6 +118,33 @@ read_abares_trade <- function(x = NULL, code_description = FALSE) {
       )
     )
   }
-  data.table::setorderv(abares_trade, c("Fiscal_year", "Month"))
+  abares_trade[,
+    (names(abares_trade)[vapply(
+      abares_trade,
+      is.character,
+      FUN.VALUE = logical(1L)
+    )]) := lapply(.SD, as.factor),
+    .SDcols = is.character
+  ]
+  data.table::setorderv(
+    abares_trade,
+    c(
+      "Trade_flow",
+      "Fiscal_year",
+      "Month",
+      "Trade_code",
+      "State",
+      "Australian_port",
+      "Overseas_location"
+    ),
+    order = 1L
+  )
+  abares_trade[,
+    Year_month := lubridate::ym(
+      gsub(".", "-", Year_month, fixed = TRUE)
+    )
+  ]
+
+  data.table::setkey(abares_trade, "Trade_code")
   return(abares_trade[])
 }
