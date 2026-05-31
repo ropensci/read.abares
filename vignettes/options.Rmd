@@ -69,8 +69,8 @@ read.abares_options(timeout = 10000) # set to 10,000 seconds
 You can change this to reduce the messages that you receive but not turn off errors.
 Valid options are:
 
-* "verbose" (default),
-* "minimal" (provides warning messages and error messages),
+* "verbose" (provides download status bars, file import messages and more),
+* "default" (provides warning messages and error messages),
 * "quiet" (provides error messages only).
 
 This can be changed using the `verbosity` argument in the `read.abares_options()`:
