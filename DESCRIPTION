@@ -5,7 +5,7 @@ Version: 2.1.0
 Authors@R: c(
     person("Adam H.", "Sparks", , "adamhsparks@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-0061-8359")),
-    person("Curtin University", role = c("fnd", "cph"),
+    person("Curtin University", role = "cph",
            comment = c("http://www.curtin.edu.au/", ROR = "02n415q13")),
     person("Jacob", "Wujciak-Jens", , "jacob@wujciak.de", role = "ctb",
            comment = c("Assisted with troubleshooting formatting in documentation to display '<' and '>' properly", ORCID = "0000-0002-7281-3989")),
