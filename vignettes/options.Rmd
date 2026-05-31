@@ -20,14 +20,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-{read.abares} provides a number of global options that can be set to control the behavior of the package.
+{read.abares} provides a number of global options that can be set to control the behaviour of the package.
 These options can be set using the `options()` function in R, but a helper function, `read.abares_options()` is provided for more direct access and convenience.
 
 ## Download Options
 
 ### User Agent String
 
-{read.abares} provides a default user agent string of `read.abares` but you can change it for your own use, _e.g._, "the user agent should be different on continuous integration services, and in development (based on, for instance, the GitHub usernames of the developers)."^[1]
+{read.abares} provides a default user agent string of `read.abares` but you can change it for your own use, _e.g._, "the user agent should be different on continuous integration services, and in development (based on, for instance, the GitHub usernames of the developers)."[^1]
 You can change the user agent string using the `user_agent` argument in the `read.abares_options()`:
 
 ```r
@@ -75,7 +75,7 @@ This can be changed using the `verbosity` argument in the `read.abares_options()
 
 ```r 
 read.abares_options(verbosity = "minimal")
-# or 
+# or
 read.abares_options(verbosity = "quiet")
 ```
 
