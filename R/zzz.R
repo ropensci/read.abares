@@ -1,29 +1,28 @@
 # Internal: map read.abares.verbosity to derived options
 #' @noRd
 .map_verbosity <- function(verbosity) {
-  v <- as.character(verbosity %||% "verbose")
-  if (!v %in% c("quiet", "minimal", "verbose")) {
-    v <- "verbose"
+  v <- as.character(verbosity %||% "default")
+  if (!v %in% c("quiet", "default", "verbose")) {
+    v <- "default"
   }
-
   list(
     rlib_message_verbosity = switch(
       v,
       quiet = "quiet",
-      minimal = "minimal",
+      default = "default",
       verbose = "verbose"
     ),
     rlib_warning_verbosity = switch(
       v,
       quiet = "quiet",
-      minimal = "verbose",
+      default = "verbose",
       verbose = "verbose"
     ),
-    warn = switch(v, quiet = -1L, minimal = 0L, verbose = 0L),
+    warn = switch(v, quiet = -1L, default = 0L, verbose = 0L),
     datatable.showProgress = switch(
       v,
       quiet = FALSE,
-      minimal = FALSE,
+      default = FALSE,
       verbose = TRUE
     )
   )
@@ -86,7 +85,8 @@
     read.abares.verbosity = "default"
   )
   toset <- !(names(op.read.abares) %in% names(op))
-  if (any(toset)) {
+  (any(toset))
+  {
     withr::local_options(op.read.abares[toset], .local_envir = penv)
   }
 
