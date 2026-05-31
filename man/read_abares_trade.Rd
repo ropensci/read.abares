@@ -26,7 +26,8 @@ A \CRANpkg{data.table} object of the \acronym{ABARES} trade data.
 }
 \description{
 Fetches and imports \acronym{ABARES} trade data. As the data, \code{x}, is large,
-~1.5GB uncompressed \acronym{CSV}, downloads may be slow.
+~1.5GB uncompressed \acronym{CSV}, downloads may be slow. The final object
+is sorted by "Fiscal_year" and "Month".
 }
 \note{
 Columns are renamed for consistency with other \acronym{ABARES} products

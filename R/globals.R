@@ -6,6 +6,7 @@ utils::globalVariables(c(
   "Year_month", # <read_abares_trade>
   "ahecc", # <read_abares_trade>
   "Trade_code", # <read_abares_trade>
+  "Description", # <read_abares_trade>
   "lat", # <read_agfd_dt>
   "lon", # <read_agfd_dt>
   "Month_issued", # <read_historical_forecast_database>

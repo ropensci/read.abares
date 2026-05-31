@@ -41,43 +41,43 @@
     c("chapter", "heading", "hs_code", "Trade_code", "uq", "description")
   )
 
-  # strip footnote markers from Trade_code e.g. "(a)(b)"
+  # strip footnote markers e.g. "(a)(b)"
   x[, Trade_code := trimws(sub("\\(.*", "", Trade_code))]
 
-  # forward-fill heading and hs_code down through their None rows so every
-  # leaf row carries the last-seen value in each structural column
+  # forward-fill heading and hs_code across ALL rows before any filtering
   x[, heading_ff := .locf(heading)]
   x[, hs_code_ff := .locf(hs_code)]
 
-  # build heading lookup: 4-digit key -> heading description
+  # heading lookup: rows where heading column is explicitly populated
   heading_lookup <- unique(x[
     !is.na(heading),
-    .(key = trimws(heading), heading_desc = .clean_label(description))
+    .(heading_ff = trimws(heading), heading_desc = .clean_label(description))
   ])
 
-  # build hs lookup: variable-length key -> hs description (may be 5 or 6 digits)
+  # hs lookup: structural rows only (hs_code present but no Trade_code)
+  # rows where hs_code and Trade_code are both present are leaf rows whose
+  # description IS the hs-level description — handled by fallback below
   hs_lookup <- unique(x[
     !is.na(hs_code) & is.na(Trade_code),
-    .(key = trimws(hs_code), hs_desc = .clean_label(description))
+    .(hs_code_ff = trimws(hs_code), hs_desc = .clean_label(description))
   ])
 
-  # keep only valid 8-digit leaf rows
+  # filter to valid 8-digit leaf rows
   x <- x[!is.na(Trade_code) & nchar(Trade_code) == 8L]
   if (!nrow(x)) {
     return(NULL)
   }
 
-  # join heading via forward-filled heading column (always 4 digits)
-  x <- heading_lookup[x, on = .(key = heading_ff)]
-  data.table::setnames(x, "key", "heading_ff")
-
-  # join hs via forward-filled hs_code column (5 or 6 digits — actual key length)
-  x <- hs_lookup[x, on = .(key = hs_code_ff)]
-  data.table::setnames(x, "key", "hs_code_ff")
-
   x[, leaf_desc := .clean_label(description)]
 
-  # assemble full description from heading -> hs -> leaf, skipping redundant levels
+  x <- heading_lookup[x, on = "heading_ff"]
+  x <- hs_lookup[x, on = "hs_code_ff"]
+
+  # when hs_desc is NA the hs_code row was also the leaf row — the leaf
+  # description is already the most specific label available, so use it
+  x[is.na(hs_desc), hs_desc := leaf_desc]
+
+  # assemble: heading - hs - leaf, skipping levels that duplicate the one below
   x[,
     Description := {
       h <- heading_desc

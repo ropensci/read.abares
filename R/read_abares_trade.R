@@ -1,7 +1,8 @@
 #' Read Data from the ABARES Trade Dashboard
 #'
 #' Fetches and imports \acronym{ABARES} trade data. As the data, `x`, is large,
-#'  ~1.5GB uncompressed \acronym{CSV}, downloads may be slow.
+#'  ~1.5GB uncompressed \acronym{CSV}, downloads may be slow. The final object
+#'  is sorted by "Fiscal_year" and "Month".
 #'
 #' @inheritParams read_aagis_regions
 #' @param code_description Boolean. Include the trade code description, this
@@ -101,8 +102,12 @@ read_abares_trade <- function(x = NULL, code_description = FALSE) {
     )
   ]
   if (isTRUE(code_description)) {
-    abares_trade <- abares_trade[ahecc, on = "Trade_code"]
+    abares_trade <- ahecc[abares_trade, on = "Trade_code"]
     abares_trade[, Trade_code := as.factor(Trade_code)]
+    abares_trade[
+      is.na(Description),
+      Description := "It's an older code sir, but it checks out. The code not in current (2022) AHECC classification"
+    ]
     data.table::setcolorder(
       abares_trade,
       c(
@@ -116,5 +121,6 @@ read_abares_trade <- function(x = NULL, code_description = FALSE) {
       )
     )
   }
+  data.table::setorderv(abares_trade, c("Fiscal_year", "Month"))
   return(abares_trade[])
 }
