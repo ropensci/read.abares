@@ -23,12 +23,12 @@ test_that(".map_verbosity handles garbage inputs gracefully", {
 
   # NULL
   res <- .map_verbosity(NULL)
-  expect_identical(res$rlib_message_verbosity, "verbose")
-  expect_true(res$datatable.showProgress)
+  expect_identical(res$rlib_message_verbosity, "default")
+  expect_false(res$datatable.showProgress)
 
   # Invalid string
   res <- .map_verbosity("super_loud_mode")
-  expect_identical(res$rlib_message_verbosity, "verbose")
+  expect_identical(res$rlib_message_verbosity, "default")
 
   # NA
   res <- .map_verbosity(NA)

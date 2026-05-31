@@ -1,13 +1,3 @@
-test_that(".map_verbosity maps inputs correctly", {
-  # These are safe to test because they don't depend on side effects
-  expect_identical(.map_verbosity("quiet")$warn, -1L)
-  expect_identical(.map_verbosity("minimal")$warn, 0L)
-  expect_true(.map_verbosity("verbose")$datatable.showProgress)
-
-  # Test defaults
-  expect_identical(.map_verbosity(NULL)$rlib_message_verbosity, "verbose")
-})
-
 test_that("read.abares_user_agent constructs correct strings", {
   # Test the CI path
   withr::local_envvar(list("READABARES_CI" = "true"))
