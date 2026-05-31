@@ -99,7 +99,7 @@ Or for the Soil Thickness for Australian areas of intensive agriculture of Layer
 There are three levels that are offered.
 
   - `quiet` - no feedback except for on failure,
-  - `minimal` - feedback on failure and warnings is provided, and
+  - `default` - feedback on failure and warnings is provided, and
   - `verbose` - verbose feedback is provided on failure, warning and for processes like download time or data import.
 
 ## About Data Serviced
