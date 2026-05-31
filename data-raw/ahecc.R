@@ -18,6 +18,8 @@
   out
 }
 
+.clean_label <- function(x) trimws(sub("^-+\\s*", "", sub(":$", "", x)))
+
 .parse_ahecc_sheet <- function(path, sheet) {
   x <- data.table::as.data.table(
     openxlsx::read.xlsx(
@@ -36,69 +38,81 @@
   data.table::setnames(
     x,
     names(x)[1L:6L],
-    c("chapter", "heading", "hs_code", "ahecc_code", "uq", "description")
+    c("chapter", "heading", "hs_code", "Trade_code", "uq", "description")
   )
 
-  x[,
-    depth := data.table::fifelse(
-      !is.na(description),
-      nchar(sub("^(-*).*", "\\1", description)),
-      0L
-    )
-  ]
-  x[,
-    label := data.table::fifelse(
-      !is.na(description),
-      trimws(sub("^-+\\s*", "", sub(":$", "", description))),
-      NA_character_
-    )
-  ]
+  # strip footnote markers from Trade_code e.g. "(a)(b)"
+  x[, Trade_code := trimws(sub("\\(.*", "", Trade_code))]
 
-  for (d in 0L:2L) {
-    col <- paste0("parent_d", d)
-    x[,
-      (col) := .locf(data.table::fifelse(
-        depth == d & !is.na(label),
-        label,
-        NA_character_
-      ))
-    ]
-  }
+  # forward-fill heading and hs_code down through their None rows so every
+  # leaf row carries the last-seen value in each structural column
+  x[, heading_ff := .locf(heading)]
+  x[, hs_code_ff := .locf(hs_code)]
 
-  x[
-    tolower(trimws(label)) == "other",
-    label := {
-      p <- data.table::fcase(
-        depth == 3L , parent_d2 , depth == 2L , parent_d1 , depth == 1L , parent_d0
-      )
-      data.table::fifelse(
-        !is.na(p),
-        paste0(tools::toTitleCase(tolower(p)), ", other"),
-        label
-      )
-    }
-  ]
+  # build heading lookup: 4-digit key -> heading description
+  heading_lookup <- unique(x[
+    !is.na(heading),
+    .(key = trimws(heading), heading_desc = .clean_label(description))
+  ])
 
-  x <- x[!is.na(ahecc_code) & nchar(trimws(ahecc_code)) == 8L]
+  # build hs lookup: variable-length key -> hs description (may be 5 or 6 digits)
+  hs_lookup <- unique(x[
+    !is.na(hs_code) & is.na(Trade_code),
+    .(key = trimws(hs_code), hs_desc = .clean_label(description))
+  ])
+
+  # keep only valid 8-digit leaf rows
+  x <- x[!is.na(Trade_code) & nchar(Trade_code) == 8L]
   if (!nrow(x)) {
     return(NULL)
   }
 
+  # join heading via forward-filled heading column (always 4 digits)
+  x <- heading_lookup[x, on = .(key = heading_ff)]
+  data.table::setnames(x, "key", "heading_ff")
+
+  # join hs via forward-filled hs_code column (5 or 6 digits — actual key length)
+  x <- hs_lookup[x, on = .(key = hs_code_ff)]
+  data.table::setnames(x, "key", "hs_code_ff")
+
+  x[, leaf_desc := .clean_label(description)]
+
+  # assemble full description from heading -> hs -> leaf, skipping redundant levels
+  x[,
+    Description := {
+      h <- heading_desc
+      s <- hs_desc
+      l <- leaf_desc
+      mid <- data.table::fifelse(
+        !is.na(s) & tolower(trimws(s)) != tolower(trimws(h)),
+        s,
+        NA_character_
+      )
+      leaf_needed <- data.table::fifelse(
+        !is.na(mid),
+        tolower(trimws(l)) != tolower(trimws(mid)),
+        tolower(trimws(l)) != tolower(trimws(h))
+      )
+      result <- data.table::fifelse(!is.na(mid), paste(h, mid, sep = " - "), h)
+      data.table::fifelse(leaf_needed, paste(result, l, sep = " - "), result)
+    }
+  ]
+
+  x[, Trade_code := as.factor(Trade_code)]
   x[,
     c(
       "chapter",
       "heading",
       "hs_code",
       "description",
-      "depth",
-      "parent_d0",
-      "parent_d1",
-      "parent_d2"
+      "heading_ff",
+      "hs_code_ff",
+      "heading_desc",
+      "hs_desc",
+      "leaf_desc"
     ) := NULL
   ]
-  x[, ahecc_code := as.factor(trimws(ahecc_code))]
-  data.table::setnames(x, "label", "description")
-  data.table::setcolorder(x, c("ahecc_code", "uq", "description"))
+  data.table::setcolorder(x, c("Trade_code", "uq", "Description"))
   x[]
 }
 
