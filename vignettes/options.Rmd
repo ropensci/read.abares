@@ -27,7 +27,7 @@ These options can be set using the `options()` function in R, but a helper funct
 
 ### User Agent String
 
-{read.abares} provides a default user agent string of `read.abares` but you can change it for your own use, _e.g._, "the user agent should be different on continuous integration services, and in development (based on, for instance, the GitHub usernames of the developers)."[^1]
+{read.abares} provides a default user agent string of `read.abares` but you can change it for your own use, _e.g._, "the user agent should be different on continuous integration services, and in development (based on, for instance, the GitHub usernames of the developers)"[^1].
 You can change the user agent string using the `user_agent` argument in the `read.abares_options()`:
 
 ```r
@@ -68,9 +68,11 @@ read.abares_options(timeout = 10000) # set to 10,000 seconds
 {read.abares} by default provides progress bars for long downloads and details when importing some spatial files.
 You can change this to reduce the messages that you receive but not turn off errors.
 Valid options are:
+
 * "verbose" (default),
 * "minimal" (provides warning messages and error messages),
 * "quiet" (provides error messages only).
+
 This can be changed using the `verbosity` argument in the `read.abares_options()`:
 
 ```r 
