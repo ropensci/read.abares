@@ -1,5 +1,5 @@
 ^LICENSE\.md$
-^CONTRIBUTING1\.md$
+^CONTRIBUTING\.md$
 ^codemeta\.json$
 ^docs$
 ^pkgdown$
@@ -7,6 +7,7 @@
 ^doc$
 ^Meta$
 ^.covrignore$
+^.github$
 ^air\.toml$
 ^inst/tools$
 ^cran-comments\.md$
