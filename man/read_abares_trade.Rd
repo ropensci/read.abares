@@ -22,7 +22,8 @@ and the unit of quantity measure, \emph{e.g.},  "KG" (kilograms), "NO"
 (number/count), "L" (litres).}
 }
 \value{
-A \CRANpkg{data.table} object of the \acronym{ABARES} trade data.
+A \CRANpkg{data.table} object of the \acronym{ABARES} trade data
+with the "Trade_code" field as the key for fast subsetting.
 }
 \description{
 Fetches and imports \acronym{ABARES} trade data. As the data, \code{x}, is large,
@@ -32,7 +33,10 @@ is sorted by "Fiscal_year" and "Month".
 \note{
 Columns are renamed for consistency with other \acronym{ABARES} products
 serviced in this package using a snake_case format and ordered
-consistently.
+consistently. "State" reflects the state of origin of the exported
+goods, not the state in which the port of departure is located; it is
+therefore expected that "State" and "Australian_port" will not always
+correspond geographically.
 }
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
