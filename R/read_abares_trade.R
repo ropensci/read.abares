@@ -18,6 +18,10 @@
 #'
 #' trade
 #'
+#' trade_codes <- read_abares_trade(code_description = TRUE)
+#'
+#' trade_codes
+#'
 #' @returns A \CRANpkg{data.table} object of the \acronym{ABARES} trade data.
 #' @family Trade
 #' @references <https://www.agriculture.gov.au/abares/research-topics/trade/dashboard>
@@ -97,8 +101,7 @@ read_abares_trade <- function(x = NULL, code_description = FALSE) {
     )
   ]
   if (isTRUE(code_description)) {
-    abares_trade <- ahecc[abares_trade, on = list(ahecc_code = Trade_code)]
-    data.table::setnames(abares_trade, "ahecc_code", "Trade_code")
+    abares_trade <- abares_trade[ahecc, on = "Trade_code"]
     abares_trade[, Trade_code := as.factor(Trade_code)]
     data.table::setcolorder(
       abares_trade,
@@ -108,7 +111,7 @@ read_abares_trade <- function(x = NULL, code_description = FALSE) {
         "Year_month",
         "Calendar_year",
         "Trade_code",
-        "description",
+        "Description",
         "uq"
       )
     )
