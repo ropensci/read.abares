@@ -38,6 +38,10 @@ consistently.
 trade <- read_abares_trade()
 
 trade
+
+trade_codes <- read_abares_trade(code_description = TRUE)
+
+trade_codes
 \dontshow{\}) # examplesIf}
 }
 \references{
