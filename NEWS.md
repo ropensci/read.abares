@@ -15,7 +15,7 @@
 
 - Download caching now works as intended, files are not re-downloaded during the current session.
 - `read_abares_trade()` no longer drops the leading "0" in the "Trade_codes" column.
-- Fixed a misconfigured footnote in the "Setting Global Options for "Working with Spatial Data in read.abares" vignette.
+- Fixed a misconfigured footnote in the "Setting Global Options for read.abares" vignette.
 
 # read.abares 2.0.1 (Unreleased)
 
