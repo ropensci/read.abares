@@ -93,7 +93,7 @@ Or for the Soil Thickness for Australian areas of intensive agriculture of Layer
 There are three levels that are offered.
 
   - `quiet` - no feedback except for on failure,
-  - `minimal` - feedback on failure and warnings is provided, and
+  - `default` - feedback on failure and warnings is provided, and
   - `verbose` - verbose feedback is provided on failure, warning and for processes like download time or data import.
 
 ## About Data Serviced
@@ -117,12 +117,19 @@ Citing {read.abares}: When citing the use of this package, please use,
 
 ``` r
 library(read.abares)
+#> 
+#> Attaching package: 'read.abares'
+#> The following object is masked from 'package:graphics':
+#> 
+#>     plot
+#> The following objects are masked from 'package:base':
+#> 
+#>     levels, plot
 citation("read.abares")
 #> To cite package 'read.abares' in publications use:
 #> 
-#>   Sparks A (????). _read.abares: Read Data from the Australian Bureau
-#>   of Agricultural and Resource Economics and Sciences (ABARES) and
-#>   Australian Bureau of Statistics (ABS)_. R package version 2.1.0,
+#>   Sparks A (????). _read.abares: Read Data from the Australian Bureau of Agricultural and Resource
+#>   Economics and Sciences (ABARES) and Australian Bureau of Statistics (ABS)_. R package version 2.1.0,
 #>   <https://docs.ropensci.org/read.abares/>.
 #> 
 #> A BibTeX entry for LaTeX users is
