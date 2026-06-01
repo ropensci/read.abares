@@ -1,20 +1,24 @@
 
-# read.abares 2.1.0
+# read.abares 3.0.0
 
-## Minor changes
+## Major Changes
+
+- `read_abares_trade()` returns all character strings as factors that are sorted by "Trade_flow", "Fiscal_year", "Month", "Trade_code", "State", "Australian_port", "Overseas_location".
+- Verbosity is now set to "default" by default, not "verbose".
+
+## Minor Changes
 
 - Users can now request trade code descriptions to be included in `read_abares_trade()`.
 
 ## Bug fixes
 
 - Download caching now works as intended, files are not re-downloaded during the current session.
-- Verbosity is now set to "default" by "default", not "verbose".
 - `read_abares_trade()` no longer drops the leading "0" in the "Trade_codes" column.
 - Fixed a misconfigured footnote in the "Setting Global Options for "Working with Spatial Data in read.abares" vignette.
 
 # read.abares 2.0.1
 
-## Minor changes
+## Minor Changes
 
 - Update title in DESCRIPTION to be <65 characters for CRAN compliance.
 
@@ -24,7 +28,7 @@
 
 - On [CRAN](https://cran.r-project.org/package=read.abares) as of 2026-01-22!
 
-## Breaking changes
+## Breaking Changes
 
 - `soil_thickness` functions are now `topsoil_thickness` functions, _e.g._, `read_soil_thickness_stars()` is now `read_topsoil_thickness_stars()`.
   This is to clarify that the data is for topsoil only and not all soil layers, thanks, @obr-soil!
@@ -79,7 +83,7 @@
 
 # read.abares 1.0.0
 
-## Breaking changes
+## Breaking Changes
 
 - Rename functions that both download and read files into active R session from `get_` to `read_` to avoid confusion with functions that only fetch data and have separate `read_` functions
 
