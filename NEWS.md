@@ -3,8 +3,10 @@
 
 ## Major Changes
 
-- `read_abares_trade()` returns all character strings as factors that are sorted by "Trade_flow", "Fiscal_year", "Month", "Trade_code", "State", "Australian_port", "Overseas_location".
+- `read_abares_trade()` returns all character strings as functionsrs that are sorted by "Trade_flow", "Fiscal_year", "Month", "Trade_code", "State", "Australian_port", "Overseas_location".
+- Verbosity option changed from "minimal" to "default", aligns with {rlang} values.
 - Verbosity is now set to "default" by default, not "verbose".
+- 
 
 ## Minor Changes
 
