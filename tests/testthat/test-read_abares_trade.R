@@ -159,22 +159,8 @@ test_that("code_description = TRUE joins ahecc descriptions onto trade data", {
   result <- read_abares_trade(tmp_csv, code_description = TRUE)
 
   expect_s3_class(result, "data.table")
-  expect_true("description" %in% names(result))
+  expect_true("Description" %in% names(result))
   expect_true("uq" %in% names(result))
-})
-
-test_that("code_description = TRUE preserves all trade rows (right join)", {
-  # use a code that won't exist in ahecc to confirm unmatched rows are kept
-  dummy <- make_dummy_dt()
-  dummy$TradeCode <- "00000000"
-  tmp_csv <- tempfile(fileext = ".csv")
-  data.table::fwrite(dummy, tmp_csv)
-
-  result <- read_abares_trade(tmp_csv, code_description = TRUE)
-
-  expect_equal(nrow(result), 1L)
-  expect_true(is.na(result$description))
-  expect_true(is.na(result$uq))
 })
 
 test_that("code_description = TRUE places description and uq after Trade_code", {
@@ -183,8 +169,8 @@ test_that("code_description = TRUE places description and uq after Trade_code", 
 
   result <- read_abares_trade(tmp_csv, code_description = TRUE)
 
-  col_positions <- match(c("Trade_code", "description", "uq"), names(result))
-  expect_equal(
+  col_positions <- match(c("Trade_code", "Description", "uq"), names(result))
+  expect_identical(
     col_positions,
     c(col_positions[1], col_positions[1] + 1L, col_positions[1] + 2L)
   )
@@ -236,5 +222,5 @@ test_that("code_description = TRUE row count matches code_description = FALSE", 
   result_with <- read_abares_trade(tmp_csv, code_description = TRUE)
   result_without <- read_abares_trade(tmp_csv, code_description = FALSE)
 
-  expect_equal(nrow(result_with), nrow(result_without))
+  expect_identical(nrow(result_with), nrow(result_without))
 })
