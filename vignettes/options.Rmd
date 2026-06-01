@@ -76,7 +76,7 @@ Valid options are:
 This can be changed using the `verbosity` argument in the `read.abares_options()`:
 
 ```r 
-read.abares_options(verbosity = "minimal")
+read.abares_options(verbosity = "default")
 # or
 read.abares_options(verbosity = "quiet")
 ```
