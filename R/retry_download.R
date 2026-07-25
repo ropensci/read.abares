@@ -74,7 +74,7 @@
   grepl(
     "https://www\\.agriculture\\.gov\\.au/sites/default/files/documents/",
     url,
-    fixed = FALSE
+    fixed = TRUE
   )
 }
 
