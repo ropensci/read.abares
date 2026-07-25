@@ -8,13 +8,13 @@
   "codeRepository": "https://docs.ropensci.org/read.abares/",
   "issueTracker": "https://codeberg.org/ropensci/read.abares/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.6.0 (2026-04-24)",
+  "runtimePlatform": "R version 4.6.1 (2026-06-24)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -395,7 +395,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "774.836KB",
+  "fileSize": "774.254KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -408,7 +408,7 @@
       ],
       "name": "{read.abares}: Read Data from the Australian Bureau of Agricultural\n    and Resource Economics and Sciences (ABARES) and Australian Bureau of\n    Statistics (ABS)",
       "url": "https://docs.ropensci.org/read.abares/",
-      "description": "R package version 3.0.0"
+      "description": "R package version 3.0.1"
     }
   ],
   "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html#stable", "https://www.repostatus.org/#active"],
