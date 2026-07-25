@@ -13,13 +13,14 @@ read.abares_options(...)
 A list of current option values.
 }
 \description{
-A convenience function to get or set options used by \pkg{read.abares}.
+A convenience function to get or set options used by \CRANpkg{read.abares}.
+These are package-level persistent options.
 }
 \examples{
 # See currently set options for {read.abares}
 read.abares_options()
 
-# Set to "verbosity" to "quiet" suppress messages
+# Set verbosity to quiet and suppress messages
 read.abares_options(read.abares.verbosity = "quiet")
 read.abares_options()
 
