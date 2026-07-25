@@ -18,7 +18,12 @@ purl(
 
 # remove file path such that vignettes will build with figures
 ra_replace <- readLines("vignettes/spatial_data_in_read.abares.Rmd")
-ra_replace <- gsub("<img src=\"vignettes/", "<img src=\"", ra_replace)
+ra_replace <- gsub(
+  "<img src=\"vignettes/",
+  "<img src=\"",
+  ra_replace,
+  fixed = TRUE
+)
 ra_file_conn <- file("vignettes/spatial_data_in_read.abares.Rmd")
 writeLines(ra_replace, ra_file_conn)
 close(ra_file_conn)
