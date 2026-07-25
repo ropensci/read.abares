@@ -26,6 +26,7 @@ with these data. Examples are provided for interacting with the metadata
 directly.
 }
 \examples{
+\dontshow{if (rlang::is_installed("pander")) withAutoprint(\{ # examplesIf}
 x <- .get_topsoil_thickness(.x = NULL)
 
 x
@@ -36,7 +37,7 @@ x
 library(pander)
 y <- x$metadata
 pander(y)
-
+\dontshow{\}) # examplesIf}
 }
 \references{
 \url{https://data.agriculture.gov.au/geonetwork/srv/eng/catalog.search#/metadata/faa9f157-8e17-4b23-b6a7-37eb7920ead6}.
