@@ -1,7 +1,7 @@
 #' Read ABARES' Catchment Scale "Land Use of Australia" GeoTIFFs Using terra
 #'
 #' Download and import catchment scale "Land Use of Australia" GeoTIFFs using
-#' \CRANpkg{terra} as a categorical [terra::rast()] object.
+#' \CRANpkg{terra} as a categorical [terra::SpatRaster()] object.
 #'
 #' @details From the
 #' [ABARES documentation](https://www.agriculture.gov.au/sites/default/files/documents/CLUM_DescriptiveMetadata_December2023_v2.pdf)
@@ -58,7 +58,7 @@
 #'
 #' plot(clum_terra)
 #'
-#' @returns A \CRANpkg{terra} `SpatRaster` object that may be one or many layers
+#' @returns A [terra::SpatRaster] object that may be one or many layers
 #'  depending upon the requested data set.
 #' @family clum
 #' @autoglobal
@@ -88,40 +88,6 @@ read_clum_terra <- function(
 
   return(r)
 }
-
-
-#' Set CLUM scale update levels
-#'
-#' Creates data.tables containing the raster categories for the \acronym{CLUM}
-#'  scale update levels.
-#'
-#' @dev
-
-.set_clum_update_levels <- function() {
-  return(list(
-    date_levels = data.table(
-      int = 2008L:2023L,
-      rast_cat = 2008L:2023L
-    ),
-    update_levels = data.table(
-      int = 0L:1L,
-      rast_cat = c("Not Updated", "Updated Since CLUM Dec. 2020 Release")
-    ),
-    scale_levels = data.table(
-      int = c(5000L, 10000L, 20000L, 25000L, 50000L, 100000L, 250000L),
-      rast_cat = c(
-        "1:5,000",
-        "1:10,000",
-        "1:20,000",
-        "1:25,000",
-        "1:50,000",
-        "1:100,000",
-        "1:250,000"
-      )
-    )
-  ))
-}
-
 
 #' Create and apply a color data.frame for the clum_50m_2023_v2 data
 #'
