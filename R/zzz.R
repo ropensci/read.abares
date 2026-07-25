@@ -33,46 +33,24 @@
 }
 
 
-.onUnload <- function(libpath) {
-  penv <- parent.env(environment())
-  withr::deferred_run(penv)
-  invisible()
-}
-
-
 #' Initialize read.abares options (internal)
 #'
 #' This is extracted from `.onLoad()` to allow testing.
 #' @noRd
 .init_read_abares_options <- function() {
-  penv <- parent.env(environment())
-
   op <- options()
-  saved <- op[
-    names(op) %in%
-      c(
-        "rlib_message_verbosity",
-        "rlib_warning_verbosity",
-        "warn",
-        "datatable.showProgress"
-      )
-  ]
-
-  read.abares_env <- new.env(parent = emptyenv())
-  read.abares_env$old_options <- saved
-
-  # Only assign if not already locked
-  if (!exists(".read.abares_env", envir = penv, inherits = FALSE)) {
-    assign(".read.abares_env", read.abares_env, envir = penv)
-  }
 
   ua <- tryCatch(
-    withr::with_options(list(warn = 0L), read.abares_user_agent()),
+    withr::with_options(
+      list(warn = 0L),
+      read.abares_user_agent()
+    ),
     error = function(e) {
       ver <- tryCatch(
         as.character(utils::packageVersion("read.abares")),
         error = function(...) "unknown"
       )
+
       sprintf("read.abares/%s (unknown UA)", ver)
     }
   )
@@ -84,16 +62,19 @@
     read.abares.max_tries = 3L,
     read.abares.verbosity = "default"
   )
+
   toset <- !(names(op.read.abares) %in% names(op))
-  (any(toset))
-  {
-    withr::local_options(op.read.abares[toset], .local_envir = penv)
+
+  if (any(toset)) {
+    options(op.read.abares[toset])
   }
 
-  verbosity <- getOption("read.abares.verbosity")
-  mapped <- .map_verbosity(verbosity)
-  withr::local_options(mapped, .local_envir = penv)
+  options(
+    .map_verbosity(
+      getOption("read.abares.verbosity", "default")
+    )
+  )
 
   invisible(NULL)
 }
-# nocov end
+#nocov end
