@@ -9,7 +9,7 @@
 #' @param .x Optional path to a local copy of the zipped data file. If it is
 #'  `NULL` a copy is downloaded from the ABARES website.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("pander")
 #' x <- .get_topsoil_thickness(.x = NULL)
 #'
 #' x
