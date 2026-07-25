@@ -126,10 +126,11 @@ library(read.abares)
 #> 
 #>     levels, plot
 citation("read.abares")
+#> Warning in meta$Date: partial match of 'Date' to 'Date/Publication'
 #> To cite package 'read.abares' in publications use:
 #> 
-#>   Sparks A (????). _read.abares: Read Data from the Australian Bureau of Agricultural and Resource
-#>   Economics and Sciences (ABARES) and Australian Bureau of Statistics (ABS)_. R package version 2.1.0,
+#>   Sparks A (2026). _read.abares: Read Data from the Australian Bureau of Agricultural and Resource
+#>   Economics and Sciences (ABARES) and Australian Bureau of Statistics (ABS)_. R package version 3.0.0,
 #>   <https://docs.ropensci.org/read.abares/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -139,7 +140,8 @@ citation("read.abares")
 #>     and Resource Economics and Sciences (ABARES) and Australian Bureau of
 #>     Statistics (ABS)},
 #>     author = {Adam H. Sparks},
-#>     note = {R package version 2.1.0},
+#>     year = {2026},
+#>     note = {R package version 3.0.0},
 #>     url = {https://docs.ropensci.org/read.abares/},
 #>   }
 ```
