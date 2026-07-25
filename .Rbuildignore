@@ -41,7 +41,6 @@
 ^man/dot-readabares_collaborators\.Rd$
 ^man/read.abares_user_agent\.Rd$
 ^man/dot-check_agfd_yyyy\.Rd$
-^man/dot-set_clum_update_levels\.Rd$
 ^man/dot-create_clum_50m_coltab\.Rd$
 ^man/dot-retry_download\.Rd$
 ^man/dot-apply_conditional_options\.Rd$
