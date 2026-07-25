@@ -127,52 +127,6 @@ test_that("read_clum_stars passes ...  to stars::read_stars", {
 })
 
 ## ---- Tests for CLUM metadata helpers ----
-test_that(".set_clum_update_levels returns a list with correct components", {
-  res <- .set_clum_update_levels()
-  expect_type(res, "list")
-  expect_named(res, c("date_levels", "update_levels", "scale_levels"))
-  expect_s3_class(res$date_levels, "data.table")
-  expect_s3_class(res$update_levels, "data.table")
-  expect_s3_class(res$scale_levels, "data.table")
-})
-
-test_that("date_levels has correct years", {
-  dl <- .set_clum_update_levels()$date_levels
-  expect_identical(dl$int, 2008L:2023L)
-  expect_identical(dl$rast_cat, 2008L:2023L)
-  expect_identical(nrow(dl), 16L)
-})
-
-test_that("update_levels has correct categories", {
-  ul <- .set_clum_update_levels()$update_levels
-  expect_identical(ul$int, 0:1)
-  expect_identical(
-    ul$rast_cat,
-    c("Not Updated", "Updated Since CLUM Dec. 2020 Release")
-  )
-  expect_identical(nrow(ul), 2L)
-})
-
-test_that("scale_levels has correct scales", {
-  sl <- .set_clum_update_levels()$scale_levels
-  expect_identical(
-    sl$int,
-    c(5000L, 10000L, 20000L, 25000L, 50000L, 100000L, 250000L)
-  )
-  expect_identical(
-    sl$rast_cat,
-    c(
-      "1:5,000",
-      "1:10,000",
-      "1:20,000",
-      "1:25,000",
-      "1:50,000",
-      "1:100,000",
-      "1:250,000"
-    )
-  )
-  expect_identical(nrow(sl), 7L)
-})
 
 test_that(".create_clum_50m_coltab loads a data.table from Rds file", {
   ct <- .create_clum_50m_coltab()

@@ -15,7 +15,7 @@ make_zip_with_tif <- function(name = "dummy.tif") {
 test_that(".check_zip_has_tiff returns tif names when valid", {
   zipfile <- make_zip_with_tif("valid.tif")
   result <- .check_zip_has_tiff(zipfile)
-  expect_true(length(result) == 1L)
+  expect_length(result, 1)
   expect_match(result, "\\.tif$")
 })
 

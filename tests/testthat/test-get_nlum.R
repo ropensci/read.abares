@@ -38,7 +38,7 @@ test_that(".get_nlum maps dataset codes correctly", {
     .retry_download = function(url, dest) NULL,
     {
       path <- .get_nlum("Y202021")
-      expect_true(grepl("NLUM_v7_250_ALUMV8_2020_21", path))
+      expect_true(grepl("NLUM_v7_250_ALUMV8_2020_21", path, fixed = TRUE))
     }
   )
 })
@@ -57,7 +57,7 @@ test_that(".get_nlum calls .retry_download when file missing", {
     {
       path <- .get_nlum("Y201516")
       expect_true(called)
-      expect_true(grepl("NLUM_v7_250_ALUMV8_2015_16", path))
+      expect_true(grepl("NLUM_v7_250_ALUMV8_2015_16", path, fixed = TRUE))
     }
   )
 })

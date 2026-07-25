@@ -2,7 +2,7 @@ test_that("read_topsoil_thickness_stars returns a stars object with correct dime
   skip_on_os("windows") # Skip due to intermittent vsizip issues on Windows CI
   zipfile <- test_path(
     "testdata",
-    "test_topsoil.zip",
+    "test_topsoil.zip"
   )
   result <- read_topsoil_thickness_stars(x = zipfile)
   expect_s3_class(result, "stars")
@@ -13,7 +13,7 @@ test_that("read_topsoil_thickness_stars works with NULL x and mocked download", 
   skip_on_os("windows") # Skip due to intermittent vsizip issues on Windows CI
   zipfile <- test_path(
     "testdata",
-    "test_topsoil.zip",
+    "test_topsoil.zip"
   )
 
   fake_retry_download <- function(url, dest) {
@@ -32,7 +32,7 @@ test_that("read_topsoil_thickness_terra returns a SpatRaster with correct dimens
   skip_on_os("windows") # Skip due to intermittent vsizip issues on Windows CI
   zipfile <- test_path(
     "testdata",
-    "test_topsoil.zip",
+    "test_topsoil.zip"
   )
   result <- read_topsoil_thickness_terra(x = zipfile)
   expect_s4_class(result, "SpatRaster")
